@@ -1,5 +1,6 @@
 # Flask-Mock
 使用Flask开发一个Mock项目，采用前后端分离的方式，不使用flask本身的模板。
+Flask文档路径：http://flask.pocoo.org/docs/1.0/
 
 ### 一、在github上新建仓库，并clone到本地
 ```
@@ -37,5 +38,18 @@ pipenv --three
 - 进入frontend目录，执行npm install
 - 执行npm run dev 运行开发模式
 
+### 七、本地运行后端调试
+flask run，默认端口为5000
+指定端口运行： flask run -p 5002
+flask run 会自动搜索app下的Flask实例。
 
+### 八、Flask配置
+- 全局配置FLASK_ENV: export FLASK_ENV=development
+- 通过dotenv配置
+- .env文件保存一些非公开的配置
+- .flaskenv保存一些公开配置
+
+### 九、解决跨越
+- 在app/__init__.py中增加CORS(app, resources={r'/*': {'origins': '*'}}, supports_credentials=True)
+- 在frontend/src/utils/request.js中修改 baseURL，使用后端服务器的ip及端口 "http://127.0.0.1:5000/"
 

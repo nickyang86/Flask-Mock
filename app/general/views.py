@@ -6,4 +6,4 @@ bp_general = Blueprint('general', __name__)
 
 @bp_general.route('/test')
 def test():
-    return jsonify('this is bp general')
+    return jsonify(dict(code=20000, message='this is bp general'))
