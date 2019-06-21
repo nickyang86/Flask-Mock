@@ -49,7 +49,3 @@ flask run 会自动搜索app下的Flask实例。
 - .env文件保存一些非公开的配置
 - .flaskenv保存一些公开配置
 
-### 九、解决跨越
-- 在app/__init__.py中增加CORS(app, resources={r'/*': {'origins': '*'}}, supports_credentials=True)
-- 在frontend/src/utils/request.js中修改 baseURL，使用后端服务器的ip及端口 "http://127.0.0.1:5000/"
-

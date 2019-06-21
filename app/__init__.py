@@ -7,14 +7,20 @@
 from flask import Flask, jsonify
 from app.helpers import select_config
 from flask_cors import CORS
+from flask import render_template
+from app.general.views import bp_general
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="../frontend/dist/static", template_folder="../frontend/dist")
 app.config.from_object(select_config())
 CORS(app, resources={r'/*': {'origins': '*'}}, supports_credentials=True)
 
-from app.general.views import bp_general
-
+# 注册blueprint
 app.register_blueprint(bp_general, url_prefix='/general')
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 
 # 模拟前端登录成功
